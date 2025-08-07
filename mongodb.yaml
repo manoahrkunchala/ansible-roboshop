@@ -1,14 +1,14 @@
-- name: configuring mongodb server
+- name: configuraing mongodb server
   become: yes
   hosts: mongodb
   tasks:
-  - name: copy mongo repo
-    ansible.builtin.copy:
-      src: mongo.repo
-      dest: /etc/yum.repos.d/mongo.repo
-
-
-  - name: install mongodb server
-    ansible.builtin.dnf:
-      name: mongo-org
-      state: present
+    - name: copy mongo repo
+      ansible.builtin.copy:
+        src: mongo.repo
+        dest: /etc/yum.repos.d/mongo.repo
+      
+    - name: install mongodb server
+      ansible.builtin.dnf:
+        name: mongo-org
+        state: present
+ 
