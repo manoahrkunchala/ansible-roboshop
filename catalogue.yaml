@@ -5,13 +5,12 @@
   - name: disable default node js 
     ansible.builtin.command: dnf module disable nodejs -y
 
-
   - name: disable default node js 
     ansible.builtin.command: dnf module enable nodejs:20 -y
 
-  - name: install nodejs module
+  - name: install nodejs 
     ansible.builtin.dnf: 
-    - name: nodejs
+      name: nodejs
       state: present
 
   - name: create roboshop system user
