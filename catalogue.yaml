@@ -48,10 +48,25 @@
     ansible.builtin.systemd_service:
       daemon_reload: true
     
-
   - name: Enable service 
     ansible.builtin.service:
      name: catalogue
      enabled: yes
      state: started
+
+  - name: copy mongo repo
+    ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
+
       
+  - name: install mongo client
+    ansible.builtin.dnf: 
+      name: mongodb-mongosh
+      state: present
+
+  - name: load products data
+    community.mongodb.mongodb_shell:
+      file: "/app/db/master-data.js"
+      idempotenet: yes 
+      login_host: mongodb.gayatriraksha.icu
