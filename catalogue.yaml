@@ -72,3 +72,7 @@
   - name: print catalogue_output
     ansible.builtin.debug: 
       msg: "{{ catalogue_output }}"
+
+  - name: load products data
+    ansible.builtin.command: mongosh --host mongodb.gayatriraksha.icu < /app/db/mastr-data.js
+    when: catalogue_output.stdout | int <0
