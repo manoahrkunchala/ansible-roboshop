@@ -19,15 +19,15 @@
       state: started
       enabled: yes
   
-  - name: removeing direcotry
+  - name: removeing directry
     ansible.builtin.file:
       path: /usr/share/nginx/html 
       state: absent
 
-  - name: create direcotry
+  - name: create directory
     ansible.builtin.file:
       path: /usr/share/nginx/html 
-      state: direcotry
+      state: directory
 
   - name: Download a code
     ansible.builtin.get_url:
